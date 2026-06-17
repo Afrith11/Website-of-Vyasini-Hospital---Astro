@@ -1,0 +1,162 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { Calendar, User, ArrowLeft, Heart } from '@lucide/astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const formattedDate = post.data.pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<Layout 
+  title={`${post.data.title} - Vyasini Hospital`}
+  description={post.data.description}
+  ogImage={post.data.image}
+>
+  
+  <!-- Back navigation and Category Header -->
+  <section class="bg-gray-50 border-b border-gray-100 py-6">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between">
+        <a 
+          href="/blog" 
+          class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-medical-slate hover:text-medical-blue transition-colors group"
+        >
+          <ArrowLeft class="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+          <span>Back to Blog</span>
+        </a>
+        <span class="bg-medical-blue/10 text-medical-blue px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+          {post.data.category}
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Post Header -->
+  <section class="py-12 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <!-- Metadata -->
+      <div class="flex items-center gap-4 text-xs sm:text-sm text-medical-slate mb-4">
+        <div class="flex items-center gap-1.5">
+          <Calendar class="w-4 h-4" />
+          <span>{formattedDate}</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <User class="w-4 h-4" />
+          <span>{post.data.author}</span>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-medical-dark leading-tight font-heading">
+        {post.data.title}
+      </h1>
+      
+      <!-- Short summary -->
+      <p class="text-base sm:text-lg text-medical-slate font-light mt-4 leading-relaxed border-l-4 border-medical-teal pl-4 italic">
+        {post.data.description}
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Article Banner Image -->
+  <section class="bg-white pb-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="rounded-3xl overflow-hidden shadow-md max-h-[400px]">
+        <!-- Standard placeholder image display for details page -->
+        <img 
+          src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80" 
+          alt={post.data.title} 
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Body -->
+  <section class="py-12 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      
+      <!-- Content Wrapper -->
+      <article class="markdown-content">
+        <Content />
+      </article>
+
+      <!-- Bottom Share / CTA area -->
+      <div class="border-t border-gray-100 mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="flex items-center gap-2 text-xs text-medical-slate font-bold uppercase">
+          <Heart class="w-4 h-4 text-red-500 fill-red-500" />
+          <span>Carefully curated by Vyasini Medical Team</span>
+        </div>
+        <a 
+          href="/appointment" 
+          class="px-5 py-3 bg-medical-blue hover:bg-blue-600 text-white rounded-xl text-xs sm:text-sm font-bold shadow-md shadow-medical-blue/15 hover:shadow-lg transition-all"
+        >
+          Book Appointment
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>
+
+<style is:global>
+  /* Local Markdown CSS overrides */
+  .markdown-content h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+  }
+  .markdown-content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1A1A1A;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-family: 'Poppins', sans-serif;
+  }
+  .markdown-content p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #4A5568;
+    margin-bottom: 1.25rem;
+  }
+  .markdown-content ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #4A5568;
+  }
+  .markdown-content li {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+  .markdown-content strong {
+    font-weight: 700;
+    color: #1A1A1A;
+  }
+  .markdown-content em {
+    font-style: italic;
+    color: #718096;
+  }
+</style>

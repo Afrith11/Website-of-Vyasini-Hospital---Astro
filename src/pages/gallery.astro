@@ -1,0 +1,245 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image, Maximize2, X } from '@lucide/astro';
+
+const categories = [
+  { id: "all", label: "All Photos" },
+  { id: "building", label: "Hospital Building" },
+  { id: "reception", label: "Reception Area" },
+  { id: "rooms", label: "Consultation Rooms" },
+  { id: "doctors", label: "Doctors & Team" },
+  { id: "facilities", label: "Facilities & Wards" },
+  { id: "equipment", label: "Medical Equipment" }
+];
+
+const galleryItems = [
+  {
+    title: "Hospital Building Exterior",
+    category: "building",
+    image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    title: "Spacious Reception & Waiting Area",
+    category: "reception",
+    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    title: "Outpatient Consultation Room",
+    category: "rooms",
+    image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    title: "Experienced Doctors Consultation",
+    category: "doctors",
+    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    title: "Equipped Diagnostic Laboratory",
+    category: "equipment",
+    image: "https://images.unsplash.com/photo-1579154204601-01588f351166?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    title: "Dedicated Maternity Ward",
+    category: "facilities",
+    image: "https://images.unsplash.com/photo-1505575967455-40e256f7377c?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    title: "Modern Ultrasound Diagnostic Scanner",
+    category: "equipment",
+    image: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    title: "In-House 24/7 Pharmacy Desk",
+    category: "facilities",
+    image: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    title: "Paediatrics Growth & Checkup Room",
+    category: "rooms",
+    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80"
+  }
+];
+---
+
+<Layout 
+  title="Gallery - VYASINI MULTI SPECIALTY HOSPITAL"
+  description="View the gallery of Vyasini Hospital (வியாசினி சிறப்பு மருத்துவமனை) - browse photos of our diagnostic labs, ICU beds, patient lounge, and equipment."
+>
+  
+  <!-- Header Page Banner -->
+  <section class="relative bg-gray-950 text-white py-16 sm:py-20 lg:py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-gray-950 to-transparent z-10 opacity-80"></div>
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center opacity-25 mix-blend-overlay"></div>
+    <div class="max-w-layout mx-auto px-4 sm:px-6 lg:px-8 relative z-20" data-aos="fade-up">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading">
+        Hospital Gallery
+      </h1>
+      <p class="text-gray-300 mt-3 max-w-xl text-sm sm:text-base font-light">
+        A visual tour of our healthcare infrastructure, clinical departments, equipment, and consulting rooms.
+      </p>
+    </div>
+  </section>
+
+  <!-- Gallery Content -->
+  <section class="py-20 bg-white">
+    <div class="max-w-layout mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Category Tabs (Filter) -->
+      <div 
+        class="flex flex-wrap items-center justify-center gap-2 mb-12"
+        data-aos="fade-up"
+      >
+        {categories.map((cat, idx) => (
+          <button
+            class={`filter-btn px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 border focus:outline-none ${
+              idx === 0
+                ? "bg-medical-blue border-medical-blue text-white shadow-md shadow-medical-blue/10"
+                : "bg-gray-50 border-gray-100 text-medical-slate hover:bg-gray-100 hover:text-medical-blue"
+            }`}
+            data-filter={cat.id}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      <!-- Gallery Grid (Masonry effect using Tailwind column layout) -->
+      <div 
+        id="gallery-grid"
+        class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        {galleryItems.map(item => (
+          <div 
+            class="gallery-item break-inside-avoid relative rounded-2xl overflow-hidden group shadow-sm hover:shadow-md border border-gray-100 bg-gray-50 cursor-pointer transition-all duration-300"
+            data-category={item.category}
+          >
+            <!-- Image with Lazy Loading -->
+            <img
+              src={item.image}
+              alt={item.title}
+              class="w-full object-cover rounded-2xl group-hover:scale-102 transition-transform duration-500"
+              loading="lazy"
+            />
+            
+            <!-- Hover Overlay -->
+            <div class="absolute inset-0 bg-medical-dark/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+              <div class="flex items-center justify-between text-white">
+                <div>
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-medical-teal bg-white/20 px-2 py-0.5 rounded">
+                    {item.category}
+                  </span>
+                  <h4 class="font-bold text-sm sm:text-base mt-2">{item.title}</h4>
+                </div>
+                <div class="p-2 bg-white/20 rounded-lg backdrop-blur">
+                  <Maximize2 class="w-4 h-4 text-white" />
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Lightbox Preview Modal -->
+  <div 
+    id="lightbox"
+    class="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+  >
+    <button 
+      id="lightbox-close"
+      class="absolute top-6 right-6 p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors focus:outline-none"
+      aria-label="Close Preview"
+    >
+      <X class="w-6 h-6" />
+    </button>
+    
+    <div class="max-w-4xl max-h-[80vh] flex flex-col items-center">
+      <img 
+        id="lightbox-img" 
+        src="" 
+        alt="" 
+        class="max-w-full max-h-[70vh] rounded-xl object-contain shadow-2xl border border-white/10"
+      />
+      <h3 id="lightbox-title" class="text-white font-bold text-sm sm:text-lg mt-4 text-center"></h3>
+    </div>
+  </div>
+
+</Layout>
+
+<script>
+  // Filter JavaScript
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Manage active class of buttons
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-medical-blue', 'border-medical-blue', 'text-white', 'shadow-md', 'shadow-medical-blue/10');
+        b.classList.add('bg-gray-50', 'border-gray-100', 'text-medical-slate');
+      });
+      btn.classList.add('bg-medical-blue', 'border-medical-blue', 'text-white', 'shadow-md', 'shadow-medical-blue/10');
+      btn.classList.remove('bg-gray-50', 'border-gray-100', 'text-medical-slate');
+
+      // Filter Logic
+      const filterValue = btn.getAttribute('data-filter');
+      
+      galleryItems.forEach(item => {
+        const itemCategory = item.getAttribute('data-category');
+        
+        if (filterValue === 'all' || itemCategory === filterValue) {
+          // Show item
+          (item as HTMLElement).style.display = 'block';
+        } else {
+          // Hide item
+          (item as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Lightbox JavaScript
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const lightboxTitle = document.getElementById('lightbox-title');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  if (lightbox && lightboxImg && lightboxTitle && lightboxClose) {
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        const title = item.querySelector('h4');
+        
+        if (img && title) {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          lightboxTitle.textContent = title.textContent;
+          
+          lightbox.classList.remove('opacity-0', 'pointer-events-none');
+          document.body.style.overflow = 'hidden'; // Lock background scroll
+        }
+      });
+    });
+
+    const closeLightbox = () => {
+      lightbox.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = ''; // Restore scroll
+      setTimeout(() => {
+        lightboxImg.src = '';
+      }, 300);
+    };
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    
+    // Close lightbox on click outside the image
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+  }
+</script>

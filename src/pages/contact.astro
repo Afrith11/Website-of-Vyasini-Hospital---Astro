@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Phone, MapPin, Mail, Clock, ShieldAlert } from '@lucide/astro';
+
+const contactInfo = [
+  {
+    title: "Hospital Address",
+    desc: "Pulikuthi-Bodinayakanur Road, Sillamarathupatti, Tamil Nadu 625528",
+    icon: MapPin,
+    color: "text-medical-teal bg-teal-50",
+    actionText: "Get Directions",
+    actionLink: "https://maps.google.com/maps?q=Pulikuthi-Bodinayakanur+Road,+Sillamarathupatti,+Tamil+Nadu+625528"
+  },
+  {
+    title: "Phone & WhatsApp",
+    desc: "Front Desk & Booking: +91 99440 61805",
+    icon: Phone,
+    color: "text-medical-blue bg-blue-50",
+    actionText: "Call Now",
+    actionLink: "tel:+919944061805"
+  },
+  {
+    title: "Email Support",
+    desc: "Inquiries: info@vyasinihospital.com / vyasinihospital@gmail.com",
+    icon: Mail,
+    color: "text-purple-500 bg-purple-50",
+    actionText: "Send Email",
+    actionLink: "mailto:info@vyasinihospital.com"
+  },
+  {
+    title: "OPD Working Hours",
+    desc: "Consultations: 9:00 AM - 8:00 PM (Mon-Sun). Emergency: 24/7.",
+    icon: Clock,
+    color: "text-orange-500 bg-orange-50",
+    actionText: "View Specialities",
+    actionLink: "/specialities"
+  }
+];
+---
+
+<Layout 
+  title="Contact Us - VYASINI MULTI SPECIALTY HOSPITAL"
+  description="Contact Vyasini Hospital (வியாசினி சிறப்பு மருத்துவமனை) - Phone: +91 99440 61805, address: Sillamarathupatti, Bodinayakanur. View Google Maps location."
+>
+  
+  <!-- Header Page Banner -->
+  <section class="relative bg-gray-950 text-white py-16 sm:py-20 lg:py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-gray-950 to-transparent z-10 opacity-80"></div>
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center opacity-25 mix-blend-overlay"></div>
+    <div class="max-w-layout mx-auto px-4 sm:px-6 lg:px-8 relative z-20" data-aos="fade-up">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading">
+        Contact & Reach Us
+      </h1>
+      <p class="text-gray-300 mt-3 max-w-xl text-sm sm:text-base font-light">
+        Reach out to our patient desk, speak to our medical staff, or locate our campus.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Grid Content -->
+  <section class="py-20 bg-white">
+    <div class="max-w-layout mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Emergency Ribbon -->
+      <div 
+        class="bg-red-50 border border-red-100 p-6 sm:p-8 rounded-3xl mb-16 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm shadow-red-50/50"
+        data-aos="fade-up"
+      >
+        <div class="flex items-center gap-4 text-center md:text-left flex-col md:flex-row">
+          <div class="w-12 h-12 rounded-2xl bg-red-600 text-white flex items-center justify-center shrink-0">
+            <ShieldAlert class="w-6 h-6 animate-pulse" />
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-red-950">24/7 Critical Emergency Helpline</h3>
+            <p class="text-xs sm:text-sm text-red-800 mt-0.5">Dial our direct trauma line for instant ambulance dispatch or emergency admissions.</p>
+          </div>
+        </div>
+        <a 
+          href="tel:+919944061805" 
+          class="px-6 py-3.5 bg-red-650 hover:bg-red-700 bg-red-600 text-white font-bold rounded-xl text-xs sm:text-sm transition-all shadow-md shadow-red-600/10 hover:shadow-lg active:scale-98"
+        >
+          Call: +91 99440 61805
+        </a>
+      </div>
+
+      <!-- Grid Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        {contactInfo.map((card, index) => (
+          <div 
+            class="bg-white border border-gray-100 p-6 sm:p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-medical-blue/20 transition-all duration-300 flex flex-col justify-between"
+            data-aos="fade-up"
+            data-aos-delay={index * 50}
+          >
+            <div>
+              <div class={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 shrink-0 ${card.color}`}>
+                <card.icon class="w-6 h-6" />
+              </div>
+              <h3 class="font-bold text-base sm:text-lg text-medical-dark mb-2">{card.title}</h3>
+              <p class="text-xs sm:text-sm text-medical-slate leading-relaxed mb-6">{card.desc}</p>
+            </div>
+            <div>
+              <a 
+                href={card.actionLink}
+                target={card.actionLink.startsWith("http") ? "_blank" : "_self"}
+                rel={card.actionLink.startsWith("http") ? "noopener noreferrer" : ""}
+                class="text-xs sm:text-sm font-bold text-medical-blue hover:text-blue-700 transition-colors"
+              >
+                {card.actionText} →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Map & Details Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Map Embed Frame -->
+        <div class="lg:col-span-8 rounded-3xl overflow-hidden shadow-md border border-gray-100 h-[380px] lg:h-[450px]" data-aos="fade-right">
+          <!-- Standard iframe query mapping Sillamarathupatti road directly -->
+          <iframe 
+            src="https://maps.google.com/maps?q=Pulikuthi-Bodinayakanur+Road,+Sillamarathupatti,+Tamil+Nadu+625528&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+            class="w-full h-full border-none"
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Vyasini Hospital Location Map"
+          ></iframe>
+        </div>
+
+        <!-- Practical details -->
+        <div class="lg:col-span-4 bg-gray-50 p-8 rounded-3xl border border-gray-100 flex flex-col justify-between" data-aos="fade-left">
+          <div>
+            <h3 class="font-bold text-lg text-medical-dark mb-4">Location Pointers</h3>
+            <ul class="space-y-4 text-xs sm:text-sm text-medical-slate leading-relaxed">
+              <li>
+                <strong>Landmark:</strong> Located along the main Pulikuthi to Bodinayakanur Road, inside the Sillamarathupatti limits.
+              </li>
+              <li>
+                <strong>Accessibility:</strong> Ground floor is wheelchair-accessible with ramps and dedicated parking space.
+              </li>
+              <li>
+                <strong>Ambulance Access:</strong> Dedicated, unobstructed driveway for ambulances and emergency vehicle entry.
+              </li>
+            </ul>
+          </div>
+          
+          <div class="mt-8 pt-6 border-t border-gray-200">
+            <p class="text-xs text-medical-slate">
+              Need assistance mapping directions? Contact our front desk directly.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

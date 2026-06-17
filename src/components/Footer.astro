@@ -1,0 +1,138 @@
+---
+import { Phone, MapPin, Mail, Clock, Heart, ArrowUpRight } from '@lucide/astro';
+
+const currentYear = new Date().getFullYear();
+
+const quickLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Specialities', href: '/specialities' },
+  { label: 'Doctors', href: '/doctors' },
+  { label: 'Facilities', href: '/facilities' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Appointment', href: '/appointment' },
+  { label: 'Contact', href: '/contact' }
+];
+
+const specialities = [
+  { label: 'General Medicine', href: '/specialities#general-medicine' },
+  { label: 'General Surgery', href: '/specialities#general-surgery' },
+  { label: 'Obstetrics & Gynaecology', href: '/specialities#obstetrics-gynaecology' },
+  { label: 'Paediatrics', href: '/specialities#paediatrics' },
+  { label: 'Orthopaedics', href: '/specialities#orthopaedics' },
+  { label: 'Diabetes Care', href: '/specialities#diabetes-care' }
+];
+---
+
+<footer class="bg-gray-900 text-gray-300 border-t-4 border-medical-teal pt-16 pb-8">
+  <div class="max-w-layout mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Grid Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+      
+      <!-- Brand & Info -->
+      <div class="flex flex-col space-y-4">
+        <a href="/" class="flex items-center gap-2.5">
+          <div class="p-1.5 bg-medical-blue rounded-lg text-white">
+            <Heart class="w-5 h-5 fill-white stroke-none" />
+          </div>
+          <span class="text-white text-lg font-bold tracking-tight">
+            VYASINI <span class="text-medical-teal">HOSPITAL</span>
+          </span>
+        </a>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          Providing compassionate, affordable, and quality healthcare services. Equipped with experienced specialists, modern diagnostics, and 24/7 emergency care.
+        </p>
+        <div class="pt-2">
+          <span class="text-xs bg-gray-800 text-medical-teal font-semibold px-3 py-1.5 rounded-full border border-gray-700">
+            Google Rating: 4.3 ★ (21+ Reviews)
+          </span>
+        </div>
+      </div>
+      
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-white font-semibold text-base mb-6 relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-10 after:h-0.5 after:bg-medical-teal">
+          Quick Links
+        </h3>
+        <ul class="grid grid-cols-2 gap-y-3 gap-x-4 text-sm">
+          {quickLinks.map(link => (
+            <li>
+              <a href={link.href} class="hover:text-white transition-colors duration-200 flex items-center gap-1">
+                <span class="text-medical-teal font-bold text-xs">›</span>
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Medical Specialities -->
+      <div>
+        <h3 class="text-white font-semibold text-base mb-6 relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-10 after:h-0.5 after:bg-medical-teal">
+          Our Specialities
+        </h3>
+        <ul class="space-y-3 text-sm">
+          {specialities.map(spec => (
+            <li>
+              <a href={spec.href} class="hover:text-white transition-colors duration-200 flex items-center justify-between group">
+                <span>{spec.label}</span>
+                <ArrowUpRight class="w-3.5 h-3.5 text-gray-500 group-hover:text-white transition-colors" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h3 class="text-white font-semibold text-base mb-6 relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-10 after:h-0.5 after:bg-medical-teal">
+          Contact Details
+        </h3>
+        <ul class="space-y-4 text-sm">
+          <li class="flex gap-3">
+            <MapPin class="w-5 h-5 text-medical-teal shrink-0 mt-0.5" />
+            <span class="text-gray-400">
+              Pulikuthi-Bodinayakanur Road,<br />
+              Sillamarathupatti,<br />
+              Tamil Nadu - 625528
+            </span>
+          </li>
+          <li class="flex items-center gap-3">
+            <Phone class="w-5 h-5 text-medical-teal shrink-0" />
+            <a href="tel:+919944061805" class="hover:text-white transition-colors">+91 99440 61805</a>
+          </li>
+          <li class="flex items-center gap-3">
+            <Mail class="w-5 h-5 text-medical-teal shrink-0" />
+            <a href="mailto:info@vyasinihospital.com" class="hover:text-white transition-colors">info@vyasinihospital.com</a>
+          </li>
+          <li class="flex items-center gap-3">
+            <Clock class="w-5 h-5 text-medical-teal shrink-0" />
+            <span class="text-gray-400">Emergency: Open 24 Hours</span>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+
+    <!-- Divider -->
+    <hr class="border-gray-800 my-8" />
+    
+    <!-- SEO Local Footprint -->
+    <div class="text-[11px] text-gray-500 leading-relaxed mb-8 text-center max-w-4xl mx-auto">
+      <strong>Vyasini Hospital Local Area Service Footprint:</strong> Serving patients looking for the best hospital in Bodinayakanur, multispeciality hospital in Bodinayakanur, hospital in Sillamarathupatti, and healthcare services in Theni. We provide top-tier emergency care, general physicians, women healthcare, and child health services in and around Bodinayakanur, Sillamarathupatti, Chinnamanur, Uthamapalayam, and the wider Theni district. Affordable, reliable, and patient-first medical treatments.
+    </div>
+
+    <!-- Bottom Copyright -->
+    <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+      <p>© {currentYear} Vyasini Multi Specialty Hospital (வியாசினி சிறப்பு மருத்துவமனை). All rights reserved.</p>
+      <div class="flex gap-4">
+        <a href="/privacy" class="hover:underline">Privacy Policy</a>
+        <span>•</span>
+        <a href="/terms" class="hover:underline">Terms of Service</a>
+      </div>
+    </div>
+    
+  </div>
+</footer>

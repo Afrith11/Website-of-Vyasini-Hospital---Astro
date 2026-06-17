@@ -1,0 +1,163 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ShieldCheck, Award, Heart, HeartPulse, CheckCircle2 } from '@lucide/astro';
+
+const values = [
+  {
+    title: "Patient-Centered Care",
+    description: "Every treatment and process is designed around our patients' physical and emotional well-being.",
+    icon: Heart
+  },
+  {
+    title: "Affordable Excellence",
+    description: "Providing high-grade medical consulting and treatments at prices accessible to every family.",
+    icon: ShieldCheck
+  },
+  {
+    title: "Uncompromising Quality",
+    description: "Maintaining strict cleanliness, using standard diagnostics, and continuous medical audits.",
+    icon: Award
+  }
+];
+
+const highlights = [
+  "Experienced & Dedicated Specialists",
+  "24/7 Active Emergency & Trauma Care",
+  "Equipped Laboratory & In-House Pharmacy",
+  "Hygienic Consultation Rooms & Ward Facilities",
+  "Patient-focused Support Staff & Nurses",
+  "Located Centrally for Bodinayakanur & Sillamarathupatti"
+];
+---
+
+<Layout 
+  title="About Us - VYASINI MULTI SPECIALTY HOSPITAL"
+  description="Learn about Vyasini Hospital (வியாசினி சிறப்பு மருத்துவமனை) in Sillamarathupatti, our mission, vision, and dedication to affordable healthcare."
+>
+  
+  <!-- Header Page Banner -->
+  <section class="relative bg-gray-950 text-white py-16 sm:py-20 lg:py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-gray-950 to-transparent z-10 opacity-80"></div>
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center opacity-25 mix-blend-overlay"></div>
+    <div class="max-w-layout mx-auto px-4 sm:px-6 lg:px-8 relative z-20" data-aos="fade-up">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading">
+        About Our Hospital
+      </h1>
+      <p class="text-gray-300 mt-3 max-w-xl text-sm sm:text-base font-light">
+        Discover our journey, core values, and dedicated healthcare mission in Bodinayakanur, Sillamarathupatti, and Theni.
+      </p>
+    </div>
+  </section>
+
+  <!-- Hospital Profile Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-layout mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left text section -->
+        <div class="lg:col-span-7" data-aos="fade-right">
+          <span class="text-xs font-bold text-medical-teal tracking-widest uppercase bg-medical-teal/10 px-3 py-1 rounded-full">
+            Our Story
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-medical-dark mt-4 mb-6 leading-tight">
+            VYASINI MULTI SPECIALTY HOSPITAL <br />
+            <span class="text-medical-blue font-semibold text-lg sm:text-xl font-heading">வியாசினி சிறப்பு மருத்துவமனை</span>
+          </h2>
+          
+          <div class="space-y-4 text-sm sm:text-base text-medical-slate leading-relaxed">
+            <p>
+              Located along the scenic Pulikuthi-Bodinayakanur Road in Sillamarathupatti, Vyasini Multi Specialty Hospital is established with a single vision: **to provide top-quality, modern, and compassionate healthcare that remains accessible and affordable for the local community**.
+            </p>
+            <p>
+              Under the leadership of experienced healthcare professionals, we serve as a beacon of health in the Theni region, offering specialized treatments in General Medicine, General Surgery, Paediatrics, Obstetrics & Gynaecology, Orthopaedics, and Diabetes Management.
+            </p>
+            <p>
+              At Vyasini, we combine clinical expertise, patient-centered care, and modern infrastructure to deliver positive outcomes. Our 24/7 emergency response ensures that lifesaving medical intervention is always nearby.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-8">
+            {highlights.map(item => (
+              <div class="flex items-center gap-2.5 text-sm font-semibold text-medical-dark">
+                <CheckCircle2 class="w-4 h-4 text-medical-teal shrink-0" />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Right image/promo card -->
+        <div class="lg:col-span-5" data-aos="fade-left">
+          <div class="relative p-2 bg-gradient-to-tr from-medical-blue to-medical-teal rounded-3xl shadow-xl shadow-medical-blue/10">
+            <img 
+              src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?auto=format&fit=crop&w=600&q=80" 
+              alt="Vyasini Medical Care" 
+              class="rounded-2xl w-full h-[320px] object-cover shadow-inner"
+              loading="lazy"
+            />
+            <!-- Overlay stats widget -->
+            <div class="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl border border-gray-100 shadow-xl flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-medical-blue text-white flex items-center justify-center">
+                <HeartPulse class="w-6 h-6" />
+              </div>
+              <div>
+                <p class="text-[10px] text-medical-slate font-bold uppercase tracking-wider">Serving Theni District</p>
+                <h4 class="font-bold text-sm sm:text-base text-medical-dark">Trusted Medical Care</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision, Mission & Core Values Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-layout mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Vision & Mission Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        
+        <!-- Mission -->
+        <div class="bg-white p-8 sm:p-10 rounded-2xl border border-gray-100 shadow-sm" data-aos="fade-up">
+          <h3 class="text-xl font-bold text-medical-dark border-b border-gray-100 pb-4 mb-4">Our Mission</h3>
+          <p class="text-sm sm:text-base text-medical-slate leading-relaxed">
+            To provide medical treatment of the highest standard with compassion, professional ethics, and state-of-the-art medical resources, ensuring quality healthcare is delivered affordably and efficiently to every strata of society in Bodinayakanur and Sillamarathupatti.
+          </p>
+        </div>
+
+        <!-- Vision -->
+        <div class="bg-white p-8 sm:p-10 rounded-2xl border border-gray-100 shadow-sm" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="text-xl font-bold text-medical-dark border-b border-gray-100 pb-4 mb-4">Our Vision</h3>
+          <p class="text-sm sm:text-base text-medical-slate leading-relaxed">
+            To be recognized as the most trusted and patient-focused healthcare institution in the region, known for medical excellence, accessible care, patient safety, and positive health contributions to the community we serve.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Core Values -->
+      <div class="text-center mb-12">
+        <h3 class="text-2xl font-bold text-medical-dark font-heading">Our Core Values</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {values.map((val, index) => (
+          <div 
+            class="bg-white p-6 sm:p-8 rounded-2xl border border-gray-100 shadow-sm text-center flex flex-col items-center"
+            data-aos="fade-up"
+            data-aos-delay={index * 50}
+          >
+            <div class="w-12 h-12 rounded-xl bg-medical-blue/10 text-medical-blue flex items-center justify-center mb-5">
+              <val.icon class="w-6 h-6" />
+            </div>
+            <h4 class="font-bold text-base sm:text-lg text-medical-dark mb-2">{val.title}</h4>
+            <p class="text-xs sm:text-sm text-medical-slate leading-relaxed">{val.description}</p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

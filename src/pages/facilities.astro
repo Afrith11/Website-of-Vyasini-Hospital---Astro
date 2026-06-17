@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { 
+  Clock, 
+  DoorClosed, 
+  Activity, 
+  HeartPulse, 
+  Users, 
+  Baby, 
+  Laptop, 
+  PhoneCall,
+  Calendar
+} from '@lucide/astro';
+
+const facilities = [
+  {
+    title: "Emergency Services",
+    icon: Clock,
+    image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&q=80",
+    description: "Our emergency and trauma unit is fully staffed and active 24/7 to address cardiac events, severe injuries, and critical medical crises immediately."
+  },
+  {
+    title: "Consultation Rooms",
+    icon: DoorClosed,
+    image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80",
+    description: "Hygienic, private, and air-conditioned outpatient consultation rooms designed to ensure comfortable discussions between you and your physician."
+  },
+  {
+    title: "Diagnostic Laboratory",
+    icon: Activity,
+    image: "https://images.unsplash.com/photo-1579154204601-01588f351166?auto=format&fit=crop&w=600&q=80",
+    description: "An in-house lab equipped to conduct hematology, biochemistry, and clinical pathology tests, providing accurate reports in minimal turnarounds."
+  },
+  {
+    title: "24-Hour Pharmacy",
+    icon: HeartPulse,
+    image: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?auto=format&fit=crop&w=600&q=80",
+    description: "Never run out of medications. Our fully stocked pharmacy operates 24/7, providing essential generic and brand-name drugs, vaccines, and medical aids."
+  },
+  {
+    title: "Patient Waiting Lounge",
+    icon: Users,
+    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80",
+    description: "A spacious, clean, and comfortable lounge area with ample seating, drinking water, and sanitization stations for visiting families and companions."
+  },
+  {
+    title: "Maternal Care Ward",
+    icon: Baby,
+    image: "https://images.unsplash.com/photo-1505575967455-40e256f7377c?auto=format&fit=crop&w=600&q=80",
+    description: "Specialized labour and recovery rooms configured for maternity comfort, equipped with fetal monitoring equipment and support systems."
+  },
+  {
+    title: "Modern Diagnostics Equipment",
+    icon: Laptop,
+    image: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=600&q=80",
+    description: "Incorporating advanced ultrasound scanners, multi-channel ECG monitors, and blood chemistry systems to guarantee scientific diagnostics."
+  },
+  {
+    title: "24-Hour Support Hotline",
+    icon: PhoneCall,
+    image: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=600&q=80",
+    description: "Dedicated clinical desks reachable round-the-clock for general inquiries, emergency ambulance dispatches, and ambulance updates."
+  }
+];
+---
+
+<Layout 
+  title="Facilities - VYASINI MULTI SPECIALTY HOSPITAL"
+  description="Explore the state-of-the-art facilities, pharmacy, lab, emergency services, and patient care wards at Vyasini Hospital in Sillamarathupatti."
+>
+  
+  <!-- Header Page Banner -->
+  <section class="relative bg-gray-950 text-white py-16 sm:py-20 lg:py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-gray-950 to-transparent z-10 opacity-80"></div>
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center opacity-25 mix-blend-overlay"></div>
+    <div class="max-w-layout mx-auto px-4 sm:px-6 lg:px-8 relative z-20" data-aos="fade-up">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading">
+        Hospital Facilities & Infrastructure
+      </h1>
+      <p class="text-gray-300 mt-3 max-w-xl text-sm sm:text-base font-light">
+        A clean, secure, and modern environment equipped to provide high-quality inpatient and outpatient treatments.
+      </p>
+    </div>
+  </section>
+
+  <!-- Facilities Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-layout mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Intro Grid -->
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="text-xs font-bold text-medical-teal tracking-widest uppercase bg-medical-teal/10 px-3 py-1 rounded-full">
+          Our Infrastructure
+        </span>
+        <h2 class="text-3xl font-bold text-medical-dark mt-3 font-heading">
+          Equipped to Care For You
+        </h2>
+        <p class="text-medical-slate mt-2 max-w-xl mx-auto text-sm sm:text-base">
+          Vyasini Multi Specialty Hospital provides complete laboratory testing, pharmacy support, maternal wards, and emergency response.
+        </p>
+      </div>
+
+      <!-- Facilities Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+        {facilities.map((fac, index) => (
+          <div 
+            class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md hover:border-medical-blue/30 transition-all duration-300 flex flex-col group"
+            data-aos="fade-up"
+            data-aos-delay={index * 50}
+          >
+            <!-- Facility Image frame -->
+            <div class="relative overflow-hidden h-48 bg-gray-50 shrink-0">
+              <img 
+                src={fac.image} 
+                alt={fac.title} 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-gray-950/60 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 flex items-center gap-2 text-white">
+                <div class="w-8 h-8 rounded-lg bg-medical-blue/90 backdrop-blur flex items-center justify-center shrink-0">
+                  <fac.icon class="w-4.5 h-4.5" />
+                </div>
+                <h3 class="font-bold text-sm sm:text-base">{fac.title}</h3>
+              </div>
+            </div>
+            
+            <!-- Description -->
+            <div class="p-6 flex-grow flex flex-col justify-between">
+              <p class="text-xs sm:text-sm text-medical-slate leading-relaxed">
+                {fac.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Call to Action Banner -->
+      <div 
+        class="mt-16 bg-white p-8 sm:p-12 rounded-3xl border border-gray-100 shadow-sm flex flex-col lg:flex-row justify-between items-center gap-8 text-center lg:text-left"
+        data-aos="fade-up"
+      >
+        <div>
+          <h3 class="text-xl sm:text-2xl font-bold text-medical-dark">Have Questions About Admissions or Facilities?</h3>
+          <p class="text-sm text-medical-slate mt-1 max-w-xl">
+            Learn more about inpatient room choices, laboratory tests pricing, and other details by contacting our general desk.
+          </p>
+        </div>
+        <a 
+          href="/contact" 
+          class="flex items-center gap-2 px-6 py-3.5 bg-medical-blue text-white rounded-xl text-xs sm:text-sm font-bold shadow-md shadow-medical-blue/20 hover:bg-blue-600 transition-colors shrink-0"
+        >
+          <Calendar class="w-4 h-4" />
+          <span>Contact Reception</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

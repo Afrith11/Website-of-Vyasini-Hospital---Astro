@@ -1,0 +1,293 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Phone, Calendar, Mail, Send, Check } from '@lucide/astro';
+
+const departments = [
+  "General Medicine",
+  "General Surgery",
+  "Obstetrics & Gynaecology",
+  "Paediatrics",
+  "Orthopaedics",
+  "Diabetes Care",
+  "Emergency Care",
+  "Family Healthcare"
+];
+---
+
+<Layout 
+  title="Book Appointment - VYASINI MULTI SPECIALTY HOSPITAL"
+  description="Book an appointment online at Vyasini Hospital (வியாசினி சிறப்பு மருத்துவமனை) in Sillamarathupatti. Submit details via WhatsApp or Email."
+>
+  
+  <!-- Header Page Banner -->
+  <section class="relative bg-gray-950 text-white py-16 sm:py-20 lg:py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-gray-950 to-transparent z-10 opacity-80"></div>
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579684389782-64d84b5e901a?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center opacity-25 mix-blend-overlay"></div>
+    <div class="max-w-layout mx-auto px-4 sm:px-6 lg:px-8 relative z-20" data-aos="fade-up">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading">
+        Book an Appointment
+      </h1>
+      <p class="text-gray-300 mt-3 max-w-xl text-sm sm:text-base font-light">
+        Fill out the form below to secure your consultation date. You can submit your booking instantly via WhatsApp or Email.
+      </p>
+    </div>
+  </section>
+
+  <!-- Appointment Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-layout mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Left Side: Information cards -->
+        <div class="lg:col-span-4 space-y-6" data-aos="fade-right">
+          <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-lg text-medical-dark mb-4">Why Book Online?</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3 text-sm text-medical-slate">
+                <div class="w-5 h-5 rounded bg-medical-teal/15 text-medical-teal flex items-center justify-center shrink-0 mt-0.5">
+                  <Check class="w-3.5 h-3.5" />
+                </div>
+                <span>Skip long queues at the hospital reception counter.</span>
+              </li>
+              <li class="flex items-start gap-3 text-sm text-medical-slate">
+                <div class="w-5 h-5 rounded bg-medical-teal/15 text-medical-teal flex items-center justify-center shrink-0 mt-0.5">
+                  <Check class="w-3.5 h-3.5" />
+                </div>
+                <span>Select your preferred consulting slot and date in advance.</span>
+              </li>
+              <li class="flex items-start gap-3 text-sm text-medical-slate">
+                <div class="w-5 h-5 rounded bg-medical-teal/15 text-medical-teal flex items-center justify-center shrink-0 mt-0.5">
+                  <Check class="w-3.5 h-3.5" />
+                </div>
+                <span>Receive quick confirmations directly on WhatsApp or Email.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-lg text-medical-dark mb-4">Direct Contact Info</h3>
+            <div class="space-y-4 text-sm">
+              <a href="tel:+919944061805" class="flex items-center gap-3 text-medical-slate hover:text-medical-blue transition-colors">
+                <Phone class="w-5 h-5 text-medical-blue shrink-0" />
+                <div>
+                  <p class="text-xs text-gray-400 font-bold uppercase">Call Reception</p>
+                  <p class="font-semibold text-medical-dark">+91 99440 61805</p>
+                </div>
+              </a>
+              <a href="https://wa.me/919944061805" class="flex items-center gap-3 text-medical-slate hover:text-medical-blue transition-colors">
+                <span class="w-5 h-5 text-[#25D366] shrink-0">
+                  <svg class="fill-current w-5 h-5" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.863-9.73.001-2.597-1.002-5.039-2.824-6.865-1.822-1.826-4.244-2.83-6.837-2.831-5.442 0-9.866 4.372-9.87 9.73-.002 1.8.486 3.565 1.412 5.116l-.99 3.616 3.738-.97c1.554.84 3.12 1.272 4.686 1.272zm9.155-6.84c-.267-.133-1.578-.77-1.82-.857-.243-.087-.419-.13-.596.134-.176.264-.683.858-.837 1.034-.154.177-.308.198-.575.065-.267-.133-1.127-.412-2.147-1.314-.792-.702-1.328-1.57-1.484-1.834-.156-.264-.017-.407.117-.539.12-.12.267-.308.4-.462.133-.154.178-.264.267-.44.089-.176.044-.33-.022-.462-.066-.132-.596-1.42-.816-1.954-.215-.515-.469-.44-.596-.44h-.508c-.176 0-.463.065-.705.33-.243.264-.926.897-.926 2.186 0 1.29.945 2.53 1.077 2.707.132.176 1.86 2.81 4.505 3.935.63.268 1.12.428 1.503.548.633.2 1.21.17 1.666.1.508-.076 1.578-.638 1.8-1.22.22-.582.22-1.08.154-1.187-.066-.109-.242-.153-.51-.286z"/></svg>
+                </span>
+                <div>
+                  <p class="text-xs text-gray-400 font-bold uppercase">WhatsApp Desk</p>
+                  <p class="font-semibold text-medical-dark">+91 99440 61805</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Interactive Form -->
+        <div class="lg:col-span-8" data-aos="fade-left">
+          <form id="appointment-form" class="bg-white p-6 sm:p-10 rounded-3xl border border-gray-100 shadow-sm space-y-6">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              
+              <!-- Patient Name -->
+              <div>
+                <label for="patient-name" class="block text-sm font-semibold text-medical-dark mb-2">Patient Full Name *</label>
+                <input
+                  type="text"
+                  id="patient-name"
+                  required
+                  placeholder="e.g. Ramesh Kumar"
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-medical-blue focus:ring-1 focus:ring-medical-blue text-sm transition-all"
+                />
+              </div>
+
+              <!-- Phone Number -->
+              <div>
+                <label for="phone-number" class="block text-sm font-semibold text-medical-dark mb-2">Mobile Phone Number *</label>
+                <input
+                  type="tel"
+                  id="phone-number"
+                  required
+                  placeholder="e.g. +91 98765 43210"
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-medical-blue focus:ring-1 focus:ring-medical-blue text-sm transition-all"
+                />
+              </div>
+
+              <!-- Department Selection -->
+              <div>
+                <label for="department" class="block text-sm font-semibold text-medical-dark mb-2">Select Medical Department *</label>
+                <select
+                  id="department"
+                  required
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-medical-blue focus:ring-1 focus:ring-medical-blue text-sm transition-all"
+                >
+                  <option value="" disabled selected>-- Choose Department --</option>
+                  {departments.map(dept => (
+                    <option value={dept}>{dept}</option>
+                  ))}
+                </select>
+              </div>
+
+              <!-- Preferred Date -->
+              <div>
+                <label for="pref-date" class="block text-sm font-semibold text-medical-dark mb-2">Preferred Appointment Date *</label>
+                <input
+                  type="date"
+                  id="pref-date"
+                  required
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-medical-blue focus:ring-1 focus:ring-medical-blue text-sm transition-all"
+                />
+              </div>
+
+              <!-- Preferred Time slot -->
+              <div class="sm:col-span-2">
+                <label for="pref-time" class="block text-sm font-semibold text-medical-dark mb-2">Preferred Time Slot *</label>
+                <select
+                  id="pref-time"
+                  required
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-medical-blue focus:ring-1 focus:ring-medical-blue text-sm transition-all"
+                >
+                  <option value="" disabled selected>-- Choose Time Slot --</option>
+                  <option value="Morning (9:00 AM - 12:00 PM)">Morning (9:00 AM - 12:00 PM)</option>
+                  <option value="Afternoon (1:00 PM - 4:00 PM)">Afternoon (1:00 PM - 4:00 PM)</option>
+                  <option value="Evening (5:00 PM - 8:00 PM)">Evening (5:00 PM - 8:00 PM)</option>
+                </select>
+              </div>
+
+              <!-- Message / Symptoms -->
+              <div class="sm:col-span-2">
+                <label for="message" class="block text-sm font-semibold text-medical-dark mb-2">Short Description / Symptoms (Optional)</label>
+                <textarea
+                  id="message"
+                  rows="4"
+                  placeholder="e.g. Regular glucose checkup / Knee pain consultation"
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-medical-blue focus:ring-1 focus:ring-medical-blue text-sm transition-all"
+                ></textarea>
+              </div>
+
+            </div>
+
+            <!-- Error message feedback -->
+            <div id="form-error" class="hidden text-xs text-red-600 font-bold bg-red-50 p-3 rounded-xl"></div>
+
+            <!-- Double Submission CTA buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 pt-4 border-t border-gray-100">
+              
+              <!-- Submit to WhatsApp Button -->
+              <button
+                type="button"
+                id="submit-wa"
+                class="flex-1 py-4 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold rounded-xl text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-200 hover:-translate-y-0.5"
+              >
+                <svg class="fill-current w-4 h-4 shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.863-9.73.001-2.597-1.002-5.039-2.824-6.865-1.822-1.826-4.244-2.83-6.837-2.831-5.442 0-9.866 4.372-9.87 9.73-.002 1.8.486 3.565 1.412 5.116l-.99 3.616 3.738-.97c1.554.84 3.12 1.272 4.686 1.272zm9.155-6.84c-.267-.133-1.578-.77-1.82-.857-.243-.087-.419-.13-.596.134-.176.264-.683.858-.837 1.034-.154.177-.308.198-.575.065-.267-.133-1.127-.412-2.147-1.314-.792-.702-1.328-1.57-1.484-1.834-.156-.264-.017-.407.117-.539.12-.12.267-.308.4-.462.133-.154.178-.264.267-.44.089-.176.044-.33-.022-.462-.066-.132-.596-1.42-.816-1.954-.215-.515-.469-.44-.596-.44h-.508c-.176 0-.463.065-.705.33-.243.264-.926.897-.926 2.186 0 1.29.945 2.53 1.077 2.707.132.176 1.86 2.81 4.505 3.935.63.268 1.12.428 1.503.548.633.2 1.21.17 1.666.1.508-.076 1.578-.638 1.8-1.22.22-.582.22-1.08.154-1.187-.066-.109-.242-.153-.51-.286z"/></svg>
+                <span>Book via WhatsApp</span>
+              </button>
+
+              <!-- Submit to Email Button -->
+              <button
+                type="button"
+                id="submit-email"
+                class="flex-1 py-4 bg-medical-blue hover:bg-blue-600 text-white font-bold rounded-xl text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-100 hover:-translate-y-0.5"
+              >
+                <Mail class="w-4 h-4 shrink-0" />
+                <span>Book via Email</span>
+              </button>
+              
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+      
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  // Read Doctor parameter from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const doctorParam = urlParams.get('doctor');
+  const messageTextarea = document.getElementById('message') as HTMLTextAreaElement;
+
+  if (doctorParam && messageTextarea) {
+    messageTextarea.value = `I would like to book a consultation with ${doctorParam}. `;
+  }
+
+  // Set minimum date picker to today
+  const dateInput = document.getElementById('pref-date') as HTMLInputElement;
+  if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.min = today;
+  }
+
+  const form = document.getElementById('appointment-form');
+  const submitWa = document.getElementById('submit-wa');
+  const submitEmail = document.getElementById('submit-email');
+  const formError = document.getElementById('form-error');
+
+  const getFormData = () => {
+    const name = (document.getElementById('patient-name') as HTMLInputElement).value.trim();
+    const phone = (document.getElementById('phone-number') as HTMLInputElement).value.trim();
+    const dept = (document.getElementById('department') as HTMLSelectElement).value;
+    const date = (document.getElementById('pref-date') as HTMLInputElement).value;
+    const time = (document.getElementById('pref-time') as HTMLSelectElement).value;
+    const msg = (document.getElementById('message') as HTMLTextAreaElement).value.trim();
+
+    if (!name || !phone || !dept || !date || !time) {
+      if (formError) {
+        formError.textContent = "Please fill in all required (*) fields before submitting.";
+        formError.classList.remove('hidden');
+      }
+      return null;
+    }
+
+    if (formError) formError.classList.add('hidden');
+    return { name, phone, dept, date, time, msg };
+  };
+
+  if (submitWa) {
+    submitWa.addEventListener('click', (e) => {
+      const data = getFormData();
+      if (!data) return;
+
+      const message = `*VYASINI HOSPITAL APPOINTMENT BOOKING*
+      
+*Patient Name:* ${data.name}
+*Phone:* ${data.phone}
+*Department:* ${data.dept}
+*Date:* ${data.date}
+*Time:* ${data.time}
+${data.msg ? `*Details:* ${data.msg}` : ''}`;
+
+      const waUrl = `https://wa.me/919944061805?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, '_blank');
+    });
+  }
+
+  if (submitEmail) {
+    submitEmail.addEventListener('click', (e) => {
+      const data = getFormData();
+      if (!data) return;
+
+      const subject = `Appointment Booking - ${data.name} (${data.dept})`;
+      const body = `Vyasini Multi Specialty Hospital Booking Details:
+
+Patient Name: ${data.name}
+Phone: ${data.phone}
+Department: ${data.dept}
+Preferred Date: ${data.date}
+Preferred Time Slot: ${data.time}
+Details/Symptoms: ${data.msg || 'N/A'}`;
+
+      const mailtoUrl = `mailto:appointments@vyasinihospital.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoUrl;
+    });
+  }
+</script>

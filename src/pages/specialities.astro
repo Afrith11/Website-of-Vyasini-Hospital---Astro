@@ -1,0 +1,178 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { 
+  Stethoscope, 
+  Activity, 
+  Baby, 
+  Smile, 
+  Award, 
+  Thermometer, 
+  Clock, 
+  Heart, 
+  Calendar, 
+  ArrowRight 
+} from '@lucide/astro';
+
+const list = [
+  {
+    id: "general-medicine",
+    title: "General Medicine",
+    icon: Stethoscope,
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80",
+    description: "Our General Medicine department delivers primary healthcare consulting and diagnosis. We specialize in managing chronic diseases such as blood pressure, respiratory issues, infectious diseases, and conducting routine health physicals.",
+    features: ["Chronic Disease Management", "Common Cold, Flu & Fevers", "Hypertension & Cholesterol Care", "Geriatric (Elderly) Care"]
+  },
+  {
+    id: "general-surgery",
+    title: "General Surgery",
+    icon: Activity,
+    image: "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=600&q=80",
+    description: "Vyasini's surgical unit handles minor and major surgical procedures. Led by expert surgeons, we use modern operating equipment and strict sterile protocols to perform hernia repairs, appendectomies, wound care, and minor removals.",
+    features: ["Hernia & Appendix Surgery", "Minor Lump & Tumor Removals", "Post-Operative Dressing & Care", "Advanced Surgical Theaters"]
+  },
+  {
+    id: "obstetrics-gynaecology",
+    title: "Obstetrics & Gynaecology",
+    icon: Baby,
+    image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80",
+    description: "Providing premium care for women throughout all life stages. Our maternal unit provides excellent prenatal checkups, delivery assistance, gestational diabetes control, family planning guidance, and routine gynaecological screenings.",
+    features: ["Comprehensive Prenatal Care", "Normal & Caesarean Delivery", "PCOS & Hormonal Treatment", "Postnatal Guidance & Care"]
+  },
+  {
+    id: "paediatrics",
+    title: "Paediatrics",
+    icon: Smile,
+    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=80",
+    description: "Your child's health is our absolute priority. We provide standard immunization, newborn care, developmental milestone checkups, and treat childhood illnesses in a welcoming, child-friendly environment designed to minimize anxiety.",
+    features: ["Childhood Immunization & Vaccine", "Newborn Screening & Care", "Growth & Development Tracking", "Paediatric OPD Consultations"]
+  },
+  {
+    id: "orthopaedics",
+    title: "Orthopaedics",
+    icon: Award,
+    image: "https://images.unsplash.com/photo-1579684389782-64d84b5e901a?auto=format&fit=crop&w=600&q=80",
+    description: "Restore your mobility and resolve bone/joint pain. Our orthopaedic clinic treats bone fractures, joint problems, sports injuries, and back/neck pain. We offer diagnostic assessments, plaster applications, and physical rehab guidance.",
+    features: ["Fracture & Trauma Management", "Joint Pain & Arthritis Treatment", "Back & Neck Pain Care", "Plaster Cast & Splinting"]
+  },
+  {
+    id: "diabetes-care",
+    title: "Diabetes Care",
+    icon: Thermometer,
+    image: "https://images.unsplash.com/photo-1505575967455-40e256f7377c?auto=format&fit=crop&w=600&q=80",
+    description: "Take control of your diabetes. We provide specialized consulting, blood sugar screening, diabetic diet planning, neuropathy checks, and family education programs to prevent long-term complications from type 1, type 2, and gestational diabetes.",
+    features: ["Type 1 & Type 2 Management", "Gestational Diabetes Care", "Diabetic Diet & Nutrition Advice", "Neuropathy & Foot Screenings"]
+  },
+  {
+    id: "emergency-care",
+    title: "Emergency Care",
+    icon: Clock,
+    image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&q=80",
+    description: "Prepared for the unexpected, 24/7. Our emergency and trauma ward is equipped with lifesaving technology, dedicated observation beds, and specialized doctors on standby to handle cardiac events, severe trauma, injuries, and accidents.",
+    features: ["24/7 Trauma & Emergency Unit", "On-Call Trauma Specialists", "Ambulance Support Service", "Rapid Diagnostic Support"]
+  },
+  {
+    id: "family-healthcare",
+    title: "Family Healthcare",
+    icon: Heart,
+    image: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&w=600&q=80",
+    description: "Comprehensive medical support for your entire family. From health checkups for adults to preventative wellness consults for children and seniors, we build ongoing medical partnerships to keep your home healthy.",
+    features: ["Annual Preventive Health Screenings", "Adult Immunizations", "Family Medical Consultation", "Wellness & Lifestyle Counseling"]
+  }
+];
+---
+
+<Layout 
+  title="Our Specialities - VYASINI MULTI SPECIALTY HOSPITAL"
+  description="Explore our specialized medical services including General Medicine, General Surgery, Gynaecology, Paediatrics, Orthopaedics, and Diabetes care in Sillamarathupatti."
+>
+  
+  <!-- Header Page Banner -->
+  <section class="relative bg-gray-950 text-white py-16 sm:py-20 lg:py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-gray-950 to-transparent z-10 opacity-80"></div>
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center opacity-25 mix-blend-overlay"></div>
+    <div class="max-w-layout mx-auto px-4 sm:px-6 lg:px-8 relative z-20" data-aos="fade-up">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading">
+        Our Medical Specialities
+      </h1>
+      <p class="text-gray-300 mt-3 max-w-xl text-sm sm:text-base font-light">
+        Comprehensive medical expertise and primary specialty care, tailored to your family's unique health needs.
+      </p>
+    </div>
+  </section>
+
+  <!-- Specialities Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-layout mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- List Grid layout -->
+      <div class="space-y-16">
+        {list.map((spec, index) => {
+          const isEven = index % 2 === 0;
+          return (
+            <div 
+              id={spec.id}
+              class={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-white p-6 sm:p-10 rounded-3xl border border-gray-100 shadow-sm scroll-mt-28 hover:shadow-md hover:border-gray-200 transition-all duration-300`}
+              data-aos="fade-up"
+            >
+              
+              <!-- Image Section -->
+              <div class={`lg:col-span-5 ${isEven ? '' : 'lg:order-2'}`}>
+                <div class="relative overflow-hidden rounded-2xl group shadow-md shadow-gray-100">
+                  <img 
+                    src={spec.image} 
+                    alt={spec.title} 
+                    class="w-full h-[280px] object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/90 backdrop-blur text-medical-blue flex items-center justify-center shadow-md">
+                    <spec.icon class="w-6 h-6" />
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Content Section -->
+              <div class={`lg:col-span-7 ${isEven ? '' : 'lg:order-1'}`}>
+                <h2 class="text-xl sm:text-2xl font-bold text-medical-dark mb-4">{spec.title}</h2>
+                <p class="text-sm sm:text-base text-medical-slate leading-relaxed mb-6">
+                  {spec.description}
+                </p>
+                
+                <!-- Features Bullet Points -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                  {spec.features.map(feat => (
+                    <div class="flex items-center gap-2 text-xs sm:text-sm font-semibold text-medical-dark">
+                      <span class="w-1.5 h-1.5 rounded-full bg-medical-teal shrink-0"></span>
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <!-- CTA -->
+                <div class="flex flex-wrap gap-4">
+                  <a 
+                    href="/appointment" 
+                    class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-white bg-medical-blue hover:bg-blue-600 px-5 py-3 rounded-xl transition-all duration-300"
+                  >
+                    <span>Book Appointment</span>
+                    <ArrowRight class="w-4 h-4" />
+                  </a>
+                  <a 
+                    href="https://wa.me/919944061805" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-medical-blue bg-medical-accent hover:bg-sky-100 px-5 py-3 rounded-xl transition-all duration-300"
+                  >
+                    <span>Enquire Details</span>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          );
+        })}
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

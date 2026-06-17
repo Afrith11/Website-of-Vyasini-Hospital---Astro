@@ -1,0 +1,59 @@
+---
+import { Phone, ArrowUp } from '@lucide/astro';
+---
+
+<div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+  
+  <!-- Back to Top Button (Hidden initially, displayed on scroll) -->
+  <button
+    id="back-to-top"
+    class="flex items-center justify-center w-12 h-12 bg-medical-dark text-white rounded-full shadow-lg opacity-0 translate-y-10 pointer-events-none hover:bg-medical-blue transition-all duration-300 focus:outline-none"
+    aria-label="Back to top"
+  >
+    <ArrowUp class="w-5 h-5" />
+  </button>
+
+  <!-- Click to Call Button (Mobile Only) -->
+  <a
+    href="tel:+919944061805"
+    class="flex items-center justify-center lg:hidden w-12 h-12 bg-medical-blue text-white rounded-full shadow-lg hover:bg-blue-600 hover:scale-105 active:scale-95 transition-all duration-300"
+    aria-label="Call Hospital"
+  >
+    <Phone class="w-5 h-5" />
+  </a>
+
+  <!-- Floating WhatsApp Button -->
+  <a
+    href="https://wa.me/919944061805?text=Hello%20Vyasini%20Hospital,%20I%20would%20like%20to%20inquire%20about%20an%20appointment."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex items-center justify-center w-12 h-12 bg-[#25D366] text-white rounded-full shadow-lg hover:bg-[#20ba5a] hover:scale-105 active:scale-95 transition-all duration-300"
+    aria-label="Chat on WhatsApp"
+  >
+    <!-- Custom SVG for WhatsApp -->
+    <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.863-9.73.001-2.597-1.002-5.039-2.824-6.865-1.822-1.826-4.244-2.83-6.837-2.831-5.442 0-9.866 4.372-9.87 9.73-.002 1.8.486 3.565 1.412 5.116l-.99 3.616 3.738-.97c1.554.84 3.12 1.272 4.686 1.272zm9.155-6.84c-.267-.133-1.578-.77-1.82-.857-.243-.087-.419-.13-.596.134-.176.264-.683.858-.837 1.034-.154.177-.308.198-.575.065-.267-.133-1.127-.412-2.147-1.314-.792-.702-1.328-1.57-1.484-1.834-.156-.264-.017-.407.117-.539.12-.12.267-.308.4-.462.133-.154.178-.264.267-.44.089-.176.044-.33-.022-.462-.066-.132-.596-1.42-.816-1.954-.215-.515-.469-.44-.596-.44h-.508c-.176 0-.463.065-.705.33-.243.264-.926.897-.926 2.186 0 1.29.945 2.53 1.077 2.707.132.176 1.86 2.81 4.505 3.935.63.268 1.12.428 1.503.548.633.2 1.21.17 1.666.1.508-.076 1.578-.638 1.8-1.22.22-.582.22-1.08.154-1.187-.066-.109-.242-.153-.51-.286z" />
+    </svg>
+  </a>
+</div>
+
+<script>
+  const backToTopBtn = document.getElementById('back-to-top');
+
+  if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+      } else {
+        backToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+</script>

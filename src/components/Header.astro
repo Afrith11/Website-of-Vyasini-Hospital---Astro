@@ -1,0 +1,145 @@
+---
+import { Menu, X, Activity, Calendar } from '@lucide/astro';
+
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Specialities', href: '/specialities' },
+  { label: 'Doctors', href: '/doctors' },
+  { label: 'Facilities', href: '/facilities' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
+  <div class="max-w-layout mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      
+      <!-- Logo Section -->
+      <a href="/" class="flex items-center gap-3 group focus:outline-none">
+        <div class="p-2 bg-medical-blue rounded-xl text-white group-hover:scale-105 transition-transform duration-300 shadow-md shadow-medical-blue/20">
+          <Activity class="w-6 h-6 sm:w-7 h-7" />
+        </div>
+        <div class="flex flex-col">
+          <span class="text-base sm:text-lg lg:text-xl font-bold tracking-tight text-medical-dark group-hover:text-medical-blue transition-colors duration-300">
+            VYASINI <span class="text-medical-teal font-medium">HOSPITAL</span>
+          </span>
+          <span class="text-[10px] sm:text-xs font-semibold text-medical-slate tracking-wide -mt-0.5">
+            வியாசினி சிறப்பு மருத்துவமனை
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-1 xl:gap-2">
+        {navItems.map(item => {
+          const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+          return (
+            <a
+              href={item.href}
+              class={`px-3 py-2 text-sm font-semibold rounded-lg transition-all duration-200 ${
+                isActive
+                  ? 'text-medical-blue bg-medical-accent'
+                  : 'text-gray-600 hover:text-medical-blue hover:bg-gray-50'
+              }`}
+            >
+              {item.label}
+            </a>
+          );
+        })}
+      </nav>
+
+      <!-- Right Action Button (Desktop) -->
+      <div class="hidden lg:flex items-center">
+        <a
+          href="/appointment"
+          class="flex items-center gap-2 px-5 py-2.5 bg-medical-blue text-white rounded-xl text-sm font-semibold hover:bg-blue-600 transition-all duration-300 shadow-md shadow-medical-blue/25 hover:shadow-lg hover:shadow-medical-blue/35 hover:-translate-y-0.5 active:translate-y-0"
+        >
+          <Calendar class="w-4 h-4" />
+          <span>Book Appointment</span>
+        </a>
+      </div>
+
+      <!-- Hamburger Menu Button (Mobile) -->
+      <button
+        id="mobile-menu-btn"
+        class="lg:hidden p-2 rounded-xl text-gray-600 hover:text-medical-blue hover:bg-gray-100 focus:outline-none transition-colors"
+        aria-label="Toggle navigation menu"
+      >
+        <Menu id="menu-icon" class="w-6 h-6" />
+        <X id="close-icon" class="w-6 h-6 hidden" />
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Navigation -->
+  <div
+    id="mobile-menu"
+    class="lg:hidden hidden border-t border-gray-100 bg-white/98 shadow-inner overflow-hidden transition-all duration-300"
+  >
+    <div class="px-4 pt-3 pb-6 space-y-1 sm:px-6">
+      {navItems.map(item => {
+        const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+        return (
+          <a
+            href={item.href}
+            class={`block px-4 py-3 text-base font-semibold rounded-xl transition-all ${
+              isActive
+                ? 'text-medical-blue bg-medical-accent'
+                : 'text-gray-700 hover:text-medical-blue hover:bg-gray-50'
+            }`}
+          >
+            {item.label}
+          </a>
+        );
+      })}
+      <div class="pt-4 px-4">
+        <a
+          href="/appointment"
+          class="flex items-center justify-center gap-2 w-full py-3 bg-medical-blue text-white rounded-xl text-base font-bold shadow-md shadow-medical-blue/25"
+        >
+          <Calendar class="w-5 h-5" />
+          <span>Book Appointment</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  if (mobileMenuBtn && mobileMenu && menuIcon && closeIcon) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isExpanded = mobileMenu.classList.contains('hidden');
+      
+      if (isExpanded) {
+        mobileMenu.classList.remove('hidden');
+        menuIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
+    });
+
+    // Close menu when navigation happens
+    const links = mobileMenu.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      });
+    });
+  }
+</script>

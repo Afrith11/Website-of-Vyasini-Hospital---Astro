@@ -1,0 +1,172 @@
+---
+import { Star, ChevronLeft, ChevronRight, MessageSquare } from '@lucide/astro';
+
+const reviews = [
+  {
+    name: "Karthick Raja",
+    date: "1 month ago",
+    rating: 5,
+    text: "Vyasini Hospital is a lifesaver in Sillamarathupatti. The doctor listened very patiently and diagnosed the issue perfectly. Treatment costs are very affordable and reasonable for village people.",
+    avatar: "K"
+  },
+  {
+    name: "Subha Priya",
+    date: "3 weeks ago",
+    rating: 5,
+    text: "Best multispeciality hospital in Bodinayakanur area for maternity care. The gynaecologist was extremely supportive throughout my pregnancy. The nursing staff are very kind and attentive.",
+    avatar: "S"
+  },
+  {
+    name: "Muthu Kumar",
+    date: "2 months ago",
+    rating: 5,
+    text: "Excellent emergency response. My father had a sudden blood sugar spike at midnight. We rushed to Vyasini, and their 24/7 emergency team stabilized him quickly. Very grateful to the doctors.",
+    avatar: "M"
+  },
+  {
+    name: "Abinaya T.",
+    date: "5 days ago",
+    rating: 5,
+    text: "Clean rooms, modern pharmacy, and state-of-the-art laboratory. Got our lab test results within an hour. The general physician was very knowledgeable. Best medical service near me.",
+    avatar: "A"
+  },
+  {
+    name: "Saravanan P.",
+    date: "3 months ago",
+    rating: 4,
+    text: "Great orthopaedic support. Hospital building is clean and spacious. The treatment fees are transparent, and there are no hidden charges. Highly recommended hospital in Theni region.",
+    avatar: "S"
+  }
+];
+---
+
+<section class="py-20 bg-medical-light overflow-hidden">
+  <div class="max-w-layout mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12" data-aos="fade-up">
+      <div>
+        <span class="text-xs font-bold text-medical-teal tracking-widest uppercase bg-medical-teal/10 px-3 py-1 rounded-full">
+          Testimonials
+        </span>
+        <h2 class="text-3xl font-bold text-medical-dark mt-3">
+          What Our Patients Say
+        </h2>
+        <p class="text-medical-slate mt-2 max-w-xl text-sm sm:text-base">
+          Read real reviews from Google about our patient experiences, dedicated doctors, and quality healthcare services.
+        </p>
+      </div>
+      
+      <!-- Google Badge & Navigation Buttons -->
+      <div class="flex items-center gap-6 mt-6 md:mt-0">
+        <!-- Google review summary card -->
+        <div class="flex items-center gap-2.5 bg-white px-4 py-2 rounded-xl border border-gray-100 shadow-sm">
+          <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center font-bold text-lg text-blue-500">G</div>
+          <div>
+            <div class="flex items-center gap-0.5">
+              <span class="font-bold text-sm text-medical-dark">4.3</span>
+              <div class="flex text-yellow-400">
+                {[...Array(5)].map((_, i) => (
+                  <Star class={`w-3.5 h-3.5 ${i < 4 ? 'fill-current' : 'text-gray-200'}`} />
+                ))}
+              </div>
+            </div>
+            <p class="text-[10px] text-medical-slate">21+ Google Reviews</p>
+          </div>
+        </div>
+
+        <div class="flex gap-2">
+          <button
+            id="prev-slide"
+            class="flex items-center justify-center w-10 h-10 rounded-xl bg-white border border-gray-100 text-medical-dark hover:bg-medical-blue hover:text-white transition-all shadow-sm focus:outline-none"
+            aria-label="Previous Review"
+          >
+            <ChevronLeft class="w-5 h-5" />
+          </button>
+          <button
+            id="next-slide"
+            class="flex items-center justify-center w-10 h-10 rounded-xl bg-white border border-gray-100 text-medical-dark hover:bg-medical-blue hover:text-white transition-all shadow-sm focus:outline-none"
+            aria-label="Next Review"
+          >
+            <ChevronRight class="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel Slider -->
+    <div
+      id="reviews-slider"
+      class="flex gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-6"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      {reviews.map(review => (
+        <div class="min-w-full sm:min-w-[48%] lg:min-w-[31.5%] snap-start shrink-0">
+          <div class="bg-white p-6 sm:p-8 rounded-2xl border border-gray-100 shadow-sm h-full flex flex-col justify-between hover:shadow-md hover:border-gray-200 transition-all duration-300">
+            <div>
+              <!-- Rating and Icon -->
+              <div class="flex justify-between items-center mb-5">
+                <div class="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star class={`w-4 h-4 ${i < review.rating ? 'fill-current' : 'text-gray-200'}`} />
+                  ))}
+                </div>
+                <MessageSquare class="w-5 h-5 text-medical-blue/20" />
+              </div>
+              
+              <!-- Review Text -->
+              <p class="text-sm sm:text-base text-medical-slate italic leading-relaxed mb-6">
+                "{review.text}"
+              </p>
+            </div>
+
+            <!-- Reviewer Info -->
+            <div class="flex items-center gap-3 pt-4 border-t border-gray-50">
+              <div class="w-10 h-10 rounded-full bg-medical-blue/10 text-medical-blue flex items-center justify-center font-bold text-sm">
+                {review.avatar}
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-medical-dark">{review.name}</h4>
+                <div class="flex items-center gap-1.5 text-xs text-medical-slate">
+                  <span>{review.date}</span>
+                  <span>•</span>
+                  <span class="text-blue-500 font-medium">Google Review</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const slider = document.getElementById('reviews-slider');
+  const prevBtn = document.getElementById('prev-slide');
+  const nextBtn = document.getElementById('next-slide');
+
+  if (slider && prevBtn && nextBtn) {
+    const getScrollAmount = () => {
+      // Return width of one element + gap
+      const item = slider.firstElementChild as HTMLElement;
+      return item ? item.offsetWidth + 24 : 300;
+    };
+
+    prevBtn.addEventListener('click', () => {
+      slider.scrollBy({
+        left: -getScrollAmount(),
+        behavior: 'smooth'
+      });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      slider.scrollBy({
+        left: getScrollAmount(),
+        behavior: 'smooth'
+      });
+    });
+  }
+</script>

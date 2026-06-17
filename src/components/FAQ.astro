@@ -1,0 +1,80 @@
+---
+import { ChevronDown, HelpCircle } from '@lucide/astro';
+
+const faqs = [
+  {
+    question: "What are the OPD consultation timings at Vyasini Hospital?",
+    answer: "Our general and specialist OPD consultations are available from Monday to Sunday, between 9:00 AM and 8:00 PM. However, emergency services, laboratory, and pharmacy are fully operational 24/7."
+  },
+  {
+    question: "Do you have 24/7 emergency support?",
+    answer: "Yes, Vyasini Multi Specialty Hospital is equipped with a 24/7 active emergency care department, trauma center, intensive care capabilities, and an on-call ambulance service to handle all critical emergencies instantly."
+  },
+  {
+    question: "Where is the hospital located in Bodinayakanur?",
+    answer: "We are located at Pulikuthi-Bodinayakanur Road, Sillamarathupatti, Tamil Nadu 625528. This central location ensures quick and easy access for patients from Bodinayakanur, Sillamarathupatti, and surrounding Theni district areas."
+  },
+  {
+    question: "What specialities and treatments do you offer?",
+    answer: "We offer comprehensive multi-specialty care including General Medicine, General Surgery, Obstetrics & Gynaecology, Paediatrics, Orthopaedics, Diabetes Care, Family Healthcare, and Emergency Trauma Care."
+  },
+  {
+    question: "How can I book an appointment with a doctor?",
+    answer: "You can easily book an appointment by visiting our website's Appointment page, filling out the quick booking form, or directly messaging us on WhatsApp or calling +91 99440 61805."
+  },
+  {
+    question: "Do you accept health insurance and cashless treatments?",
+    answer: "Yes, we support major corporate health insurance programs, third-party administrators (TPAs), and various government-backed health insurance schemes. Please contact our reception desk with your policy details for verification."
+  }
+];
+---
+
+<section class="py-16 bg-gray-50">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-12" data-aos="fade-up">
+      <span class="text-xs font-bold text-medical-teal tracking-widest uppercase bg-medical-teal/10 px-3 py-1 rounded-full">
+        Got Questions?
+      </span>
+      <h2 class="text-3xl font-bold text-medical-dark mt-3">
+        Frequently Asked Questions
+      </h2>
+      <p class="text-medical-slate mt-2 max-w-xl mx-auto text-sm sm:text-base">
+        Find quick answers to common questions about appointments, timings, and services at Vyasini Multi Specialty Hospital.
+      </p>
+    </div>
+
+    <!-- Accordion Grid -->
+    <div class="space-y-4">
+      {faqs.map((faq, index) => (
+        <div 
+          class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:border-medical-blue/30 transition-all duration-300"
+          data-aos="fade-up"
+          data-aos-delay={index * 50}
+        >
+          <details class="group [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer select-none">
+              <div class="flex items-center gap-3">
+                <HelpCircle class="w-5 h-5 text-medical-blue shrink-0" />
+                <span class="font-semibold text-sm sm:text-base text-medical-dark group-hover:text-medical-blue transition-colors">
+                  {faq.question}
+                </span>
+              </div>
+              <span class="p-1.5 rounded-lg bg-gray-50 text-gray-500 group-hover:bg-medical-accent group-hover:text-medical-blue transition-all shrink-0">
+                <ChevronDown class="w-4 h-4 transition-transform duration-300 group-open:-rotate-180" />
+              </span>
+            </summary>
+            
+            <div class="px-5 pb-5 pt-1 border-t border-gray-50">
+              <p class="text-sm sm:text-base text-medical-slate leading-relaxed">
+                {faq.answer}
+              </p>
+            </div>
+          </details>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
